@@ -80,17 +80,17 @@ export default function ChatLayout() {
   const handleSearch = (newSearchQuery) => {
     setSearchQuery(newSearchQuery);
 
-    const searchedUsers = users.filter((user) => {
+    const searchedUsers = users?.filter((user) => {
       return user.displayName
         .toLowerCase()
         .includes(newSearchQuery.toLowerCase());
     });
 
-    const searchedUsersId = searchedUsers.map((u) => u.uid);
+    const searchedUsersId = searchedUsers?.map((u) => u.uid);
 
     // If there are initial contacts
-    if (chatRooms.length !== 0) {
-      chatRooms.forEach((chatRoom) => {
+    if (chatRooms?.length !== 0) {
+      chatRooms?.forEach((chatRoom) => {
         // Check if searched user is a contact or not.
         const isUserContact = chatRoom.members.some(
           (e) => e !== currentUser.uid && searchedUsersId.includes(e)
